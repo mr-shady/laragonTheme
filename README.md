@@ -10,9 +10,6 @@
 - Instant search functionality to quickly find directories and files.
 - Built with Bootstrap 5.3.1 for a responsive and modern design.
 
-## Demo
-
-A live demo of the theme is available [here](link-to-demo).
 
 ## Installation
 
@@ -44,3 +41,12 @@ You can customize the theme by modifying the following files:
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+
+## License
+
+This project is MIT licensed.
+
+## Acknowledgements
+
+- [Laragon](https://laragon.org/)
+- [Bootstrap](https://getbootstrap.com/)
