@@ -1,52 +1,210 @@
-# Laragon Index Page Theme
+# Laragon Modern Index Theme
 
-> This repository contains a custom theme for the Laragon index page that enhances its functionality and aesthetic appeal. The theme is built with Bootstrap 5.3.1 and provides a visual representation of all directories and files, with the first character of each folder used as an icon. It also features an instant search functionality for ease of navigation
+A modern and lightweight replacement for the default Laragon index page with a clean dark UI, instant project search, project statistics, quick development tools access, and direct folder opening support for Windows.
 
 ![Screenshot](Screenshot.png)
 
+---
+
 ## Features
 
-- Displays directories and files with folder icons.
-- Instant search functionality to quickly find directories and files.
-- Built with Bootstrap 5.3.1 for a responsive and modern design.
+### Modern Dashboard UI
+- Clean dark interface inspired by modern developer dashboards.
+- Fully responsive layout for desktop and mobile.
+- RTL (Persian/Farsi) interface support.
+- Animated hover effects and smooth transitions.
 
+### Project Management
+- Automatically scans all directories inside `www`.
+- Displays each project with:
+  - Custom colored avatar
+  - Project URL
+  - Quick access button
+- Grid and list view modes.
+- Instant live search for projects.
+- Project counter with dynamic filtering.
+
+### Quick Folder Access
+- Open project folders directly in Windows Explorer.
+- Open the root `www` folder from the dashboard.
+- Includes validation to prevent path traversal attacks.
+
+### Development Tools Shortcuts
+Quick access cards for:
+- phpMyAdmin
+- PHP Info
+- Redis Web Admin
+- Memcached
+- MailPit
+- Adminer
+
+### Environment Information
+Displays useful runtime information:
+- PHP version
+- PHP architecture (32-bit / 64-bit)
+- PHP memory limit
+- Max execution time
+- Web server information
+- Document root path
+- Upload limit
+
+### Security Improvements
+- Directory validation before opening folders.
+- Prevents invalid path injection.
+- Safe handling of directory names.
+
+---
+
+## Requirements
+
+- Laragon
+- PHP 7.4+
+- Windows (folder opening feature uses `explorer.exe`)
+
+---
 
 ## Installation
 
-1. Clone the repository:
+### 1. Clone the repository
 
-   ```shell
-   git clone https://github.com/mr-shady/laragonTheme
-   ```
-2. Copy the theme files to your Laragon installation directory:
-    ```shell
-    cp -R laragonTheme/* laragon/www/
-    ```
-3. Open Laragon and access the index page in your browser.
+```bash
+git clone https://github.com/mr-shady/laragonTheme
+```
+
+### 2. Copy files into Laragon
+
+Copy the contents into your Laragon `www` directory:
+
+```bash
+cp -R laragonTheme/* laragon/www/
+```
+
+Or manually replace your existing `index.php` file.
+
+### 3. Restart Laragon
+
+Restart Laragon and open:
+
+```text
+https://localhost
+```
+
+---
+
+## Configuration
+
+Inside `index.php` you can customize the local domain postfix:
+
+```php
+$DomainPostFix = 'test';
+```
+
+Example generated URL:
+
+```text
+https://project-name.test
+```
+
+---
 
 ## Usage
 
-The theme automatically scans the directories and files in your Laragon installation directory and displays them on the index page. You can use the following features:
+### Search Projects
+Use the search input to instantly filter projects.
 
-- **Folder Icons**: Each folder is displayed with an icon representing the first character of the folder name.
-- **Instant Search**: Use the search bar at the top of the page to quickly search for directories and files.
+### Change View Mode
+Switch between:
+- Grid View
+- List View
+
+### Open Project Folder
+Click the folder icon on a project card to open the directory directly in Windows Explorer.
+
+### Open Root WWW Folder
+Use the `WWW` tool card or project statistics card to open the Laragon root directory.
+
+---
+
+## Built-in Endpoints
+
+### PHP Info
+
+```text
+/?q=info
+```
+
+Displays the PHP configuration page.
+
+### Open Folder
+
+```text
+/?q=open&dir=project-name
+```
+
+Opens the selected project folder in Windows Explorer.
+
+---
 
 ## Customization
 
-You can customize the theme by modifying the following files:
+You can customize:
 
-- index.php: The main php file for the index page.
-- bootstrap-5.3.1/custom.css: Custom CSS styles for the theme.
+- Colors from the CSS `:root` variables.
+- Tool shortcuts inside the tools section.
+- Typography and spacing.
+- Project URL postfix.
+- Card styles and animations.
+
+Main customization file:
+
+```text
+index.php
+```
+
+---
+
+## Technologies Used
+
+- PHP
+- Vanilla JavaScript
+- Modern CSS
+- Google Fonts (`Vazirmatn` and `Fira Code`)
+
+---
+
+## Security Notes
+
+The folder open feature validates directory names using regex:
+
+```php
+/^[a-zA-Z0-9_\-\.]+$/
+```
+
+This prevents:
+- Path traversal
+- Invalid directory access
+- Arbitrary path injection
+
+---
 
 ## Contributing
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+Contributions, issues, and pull requests are welcome.
+
+If you have ideas for improvements, feel free to open an issue.
+
+---
 
 ## License
 
-This project is MIT licensed.
+MIT License
+
+---
 
 ## Acknowledgements
 
-- [Laragon](https://laragon.org/)
-- [Bootstrap](https://getbootstrap.com/)
+- Laragon
+- phpMyAdmin
+- MailPit
+- Adminer
+
